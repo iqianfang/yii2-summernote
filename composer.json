@@ -32,6 +32,7 @@
     "support": {
         "source": "https://github.com/iqianfang/yii2-summernote"
     },
+	"minimum-stability": "stable",
     "require": {
         "yiisoft/yii2": "~2",
 		"bower-asset/codemirror": "@stable"
