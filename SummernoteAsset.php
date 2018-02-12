@@ -2,7 +2,6 @@
 
 namespace iqianfang\summernote;
 
-use common\models\Helper;
 use Yii;
 use yii\web\AssetBundle;
 
@@ -21,12 +20,20 @@ class SummernoteAsset extends AssetBundle
      */
     public function init()
     {
-        $postfix = YII_DEBUG ? '' : '.min';
-        $postfix .= Helper::isWx()&&Helper::getSystem()=='android' ? '.wx':'';
+		$postfix = $this->isWx() ? '.wx':'';
+        $postfix .= YII_DEBUG ? '' : '.min';
 
         $this->css[] = 'summernote.css';
         $this->js[] = 'summernote' . $postfix . '.js';
 
         parent::init();
+    }
+	
+	public function isWx()
+    {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+            return true;
+        }
+        return false;
     }
 }

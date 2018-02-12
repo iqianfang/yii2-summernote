@@ -1,4 +1,4 @@
-# Yii2 Summernote widget. Summernote v0.8.7
+#SNPlus Yii2 Summernote widget. Summernote v0.8.7 [仅适用于SNPlus]
 
 [Yii2](http://www.yiiframework.com) [Summernote](http://hackerwins.github.io/summernote) widget. Super simple WYSIWYG editor on Bootstrap
 
@@ -10,7 +10,7 @@ The preferred way to install this extension is through [Composer](http://getcomp
 
 Either run
 
-	php composer.phar require iqianfang/yii2-summernote "dev-master"
+	php composer.phar require iqianfang/yii2-summernote
 
 or add
 
