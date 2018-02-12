@@ -8,6 +8,10 @@
  *
  * Date: 2017-08-15T06:23Z
  */
+function _isWeiXin(){
+  var ua = window.navigator.userAgent.toLowerCase();
+  return ua.match(/MicroMessenger/i) == 'micromessenger';
+}
 (function (factory) {
   /* global define */
   if (typeof define === 'function' && define.amd) {
@@ -6879,17 +6883,30 @@
         imageLimitation = '<small>' + lang.image.maximumFileSize + ' : ' + readableSize + '</small>';
       }
 
-      var body = '<div class="form-group note-group-select-from-files">' +
-                   '<label>' + lang.image.selectFromFiles + '</label>' +
-                   '<input class="note-image-input form-control" type="file" name="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" multiple="multiple" />' +
-                   imageLimitation +
-                 '</div>' +
-              ''+
-                 '<div class="form-group note-group-image-url" style="overflow:auto;">' +
-                   '<label>' + lang.image.url + '</label>' +
-                  '<div class="input-group"><input class="note-image-url form-control col-md-12" type="text" /><span class="input-group-btn"><button href="#" class="btn btn-primary note-image-btn">'+lang.image.insert+
-                  '</button>' +
-                 '</span></div></div>';
+      if (_isWeiXin()){
+        var body = '<div class="form-group note-group-select-from-files">' +
+            '<button id="sn_wx_upload_img">' + lang.image.selectFromFiles + '</button>' +
+            '</div>' +
+            ''+
+            '<div class="form-group note-group-image-url" style="overflow:auto;">' +
+            '<label>' + lang.image.url + '</label>' +
+            '<div class="input-group"><input class="note-image-url form-control col-md-12" type="text" /><span class="input-group-btn"><button href="#" class="btn btn-primary note-image-btn">'+lang.image.insert+
+            '</button>' +
+            '</span></div></div>';
+      }else{
+        var body = '<div class="form-group note-group-select-from-files">' +
+            '<label>' + lang.image.selectFromFiles + '</label>' +
+            '<input class="note-image-input form-control" type="file" name="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" multiple="multiple" />' +
+            imageLimitation +
+            '</div>' +
+            ''+
+            '<div class="form-group note-group-image-url" style="overflow:auto;">' +
+            '<label>' + lang.image.url + '</label>' +
+            '<div class="input-group"><input class="note-image-url form-control col-md-12" type="text" /><span class="input-group-btn"><button href="#" class="btn btn-primary note-image-btn">'+lang.image.insert+
+            '</button>' +
+            '</span></div></div>';
+      }
+
       var footer = '';
 
       this.$dialog = ui.dialog({
