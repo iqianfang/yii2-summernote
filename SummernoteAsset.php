@@ -20,7 +20,6 @@ class SummernoteAsset extends AssetBundle
      */
     public function init()
     {
-		$postfix = $this->isWx() ? '.wx':'';
         $postfix .= YII_DEBUG ? '' : '.min';
 
         $this->css[] = 'summernote.css';
